@@ -111,4 +111,6 @@ const renderSongs = (array) => {
     playlistSongs.innerHTML = songsHTML;
 }
 
-renderSongs (userData?.songs);
+userData?.songs.sort((a, b) => a.title === b.title ? 0 : a.title < b.title ? -1 : 1);
+
+renderSongs(userData?.songs);
