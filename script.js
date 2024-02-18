@@ -111,7 +111,11 @@ const pauseSong = () => {
     audio.pause();
 }
 
-const playNextSong = () => {};
+const playNextSong = () => {
+    if (userData?.currentSong === null) {
+        playSong(userData?.songs[0].id);
+    }
+};
 
 const playPreviousSong = () => {};
 
@@ -150,6 +154,8 @@ playButton.addEventListener("click", () => {
 });
 
 pauseButton.addEventListener("click", pauseSong);
+
+nextButton.addEventListener("click", playNextSong);
 
 userData?.songs.sort((a, b) => a.title === b.title ? 0 : a.title < b.title ? -1 : 1);
 
