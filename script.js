@@ -250,6 +250,21 @@ previousButton.addEventListener("click", playPreviousSong);
 
 shuffleButton.addEventListener("click", shuffle);
 
+audio.addEventListener("ended", () => {
+    const currentSongIndex = getCurrentSongIndex();
+    const nextSongExists = userData.songs.length - 1 > currentSongIndex ? true : false;
+    if (nextSongExists) {
+        playNextSong();
+    } else {
+        userData.currentSong = null;
+        userData.songCurrentTime = 0;
+        pauseSong();
+        setPlayerDisplay();
+        highlightCurrentSong();
+        setPlayButtonAccessibleText();
+    };
+});
+
 userData?.songs.sort((a, b) => a.title === b.title ? 0 : a.title < b.title ? -1 : 1);
 
 renderSongs(userData?.songs);
