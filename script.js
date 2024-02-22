@@ -157,6 +157,11 @@ const deleteSong = (id) => {
     renderSongs(userData?.songs);
     highlightCurrentSong();
     setPlayButtonAccessibleText();
+
+    //check if the playlist is empty
+    if (userData?.songs.length === 0) {
+        
+    }
 }
 
 const setPlayerDisplay = () => {
